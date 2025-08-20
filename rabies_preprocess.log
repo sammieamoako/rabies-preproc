@@ -1,0 +1,613 @@
+250524-20:17:59,184 nipype.workflow INFO:
+	 Running RABIES - version: 0.5.1
+250524-20:17:59,188 nipype.workflow INFO:
+	 CLI INPUTS: 
+-> rabies_stage = preprocess 
+-> inclusion_ids = ['all'] 
+-> exclusion_ids = ['none'] 
+-> plugin = Linear 
+-> local_threads = 16 
+-> scale_min_memory = 1.0 
+-> min_proc = 1 
+-> figure_format = png 
+-> verbose = 1 
+-> force = False 
+-> bids_dir = /bids_dir 
+-> output_dir = /output_dir 
+-> bids_filter = {'func': {'suffix': ['bold', 'cbv']}, 'anat': {'suffix': ['T1w', 'T2w']}} 
+-> bold_only = False 
+-> anat_autobox = False 
+-> bold_autobox = False 
+-> oblique2card = none 
+-> apply_despiking = False 
+-> HMC_option = optim 
+-> isotropic_HMC = False 
+-> voxelwise_motion = False 
+-> apply_slice_mc = False 
+-> detect_dummy = False 
+-> data_type = float32 
+-> anat_inho_cor = {'method': 'SyN', 'otsu_thresh': '2', 'multiotsu': False} 
+-> anat_robust_inho_cor = {'apply': False, 'masking': False, 'brain_extraction': False, 'template_registration': 'SyN'} 
+-> bold_inho_cor = {'method': 'Rigid', 'otsu_thresh': '2', 'multiotsu': False} 
+-> bold_robust_inho_cor = {'apply': False, 'masking': False, 'brain_extraction': False, 'template_registration': 'SyN'} 
+-> commonspace_reg = {'masking': False, 'brain_extraction': False, 'template_registration': 'SyN', 'fast_commonspace': False} 
+-> inherit_unbiased_template = none 
+-> bold2anat_coreg = {'masking': False, 'brain_extraction': False, 'registration': 'SyN'} 
+-> nativespace_resampling = inputs_defined 
+-> commonspace_resampling = inputs_defined 
+-> anatomical_resampling = inputs_defined 
+-> apply_STC = False 
+-> TR = auto 
+-> tpattern = alt-z 
+-> stc_axis = Y 
+-> interp_method = fourier 
+-> anat_template = /home/mambauser/.local/share/rabies/DSURQE_40micron_average.nii.gz 
+-> brain_mask = /home/mambauser/.local/share/rabies/DSURQE_40micron_mask.nii.gz 
+-> WM_mask = /home/mambauser/.local/share/rabies/DSURQE_40micron_eroded_WM_mask.nii.gz 
+-> CSF_mask = /home/mambauser/.local/share/rabies/DSURQE_40micron_eroded_CSF_mask.nii.gz 
+-> vascular_mask = /home/mambauser/.local/share/rabies/vascular_mask.nii.gz 
+-> labels = /home/mambauser/.local/share/rabies/DSURQE_40micron_labels.nii.gz 
+
+250524-20:17:59,226 nipype.workflow INFO:
+	 INPUT BIDS DATASET:  
+bids_dir/ 
+    sub-PHG001/ 
+        ses-3/ 
+            anat/ 
+                sub-PHG001_ses-3_acq-RARE_T2w.json 
+                sub-PHG001_ses-3_acq-RARE_T2w.nii.gz 
+            func/ 
+                sub-PHG001_ses-3_task-rest_acq-EPI_run-1_bold.json 
+                sub-PHG001_ses-3_task-rest_acq-EPI_run-1_bold.nii.gz 
+    sub-PHG002/ 
+        ses-3/ 
+            anat/ 
+                sub-PHG002_ses-3_acq-RARE_T2w.json 
+                sub-PHG002_ses-3_acq-RARE_T2w.nii.gz 
+            func/ 
+                sub-PHG002_ses-3_task-rest_acq-EPI_run-1_bold.json 
+                sub-PHG002_ses-3_task-rest_acq-EPI_run-1_bold.nii.gz 
+
+250524-20:18:13,421 nipype.workflow WARNING:
+	 The BIDS compliance failed: 'dataset_description.json' is missing from project root. Every valid BIDS dataset must have this file.
+Example contents of 'dataset_description.json': 
+{"Name": "Example dataset", "BIDSVersion": "1.0.2"} 
+
+RABIES will run anyway; double-check that the right files were picked up for processing.
+
+250524-20:20:15,773 nipype.workflow INFO:
+	 Running workflow with Linear plugin.
+250524-20:20:16,295 nipype.workflow INFO:
+	 Workflow main_wf settings: ['check', 'execution', 'logging', 'monitoring']
+250524-20:20:16,482 nipype.workflow INFO:
+	 Running serially.
+250524-20:20:16,486 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.resample_template" in "/output_dir/main_wf/resample_template".
+250524-20:20:16,537 nipype.workflow INFO:
+	 [Node] Running "resample_template" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:20:17,639 nipype.workflow INFO:
+	 Resampling template to 0.10000000149011612x0.10000000149011612x0.10000000149011612mm dimensions.
+250524-20:20:21,787 nipype.workflow INFO:
+	 [Node] Finished "main_wf.resample_template".
+250524-20:20:21,794 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_selectfiles" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/anat_selectfiles".
+250524-20:20:21,838 nipype.workflow INFO:
+	 [Node] Running "anat_selectfiles" ("rabies.preprocess_pkg.utils.BIDSDataGraber")
+250524-20:20:22,94 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_selectfiles".
+250524-20:20:22,97 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_selectfiles" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/anat_selectfiles".
+250524-20:20:22,143 nipype.workflow INFO:
+	 [Node] Running "anat_selectfiles" ("rabies.preprocess_pkg.utils.BIDSDataGraber")
+250524-20:20:22,503 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_selectfiles".
+250524-20:20:22,508 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_selectfiles" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/bold_selectfiles".
+250524-20:20:22,558 nipype.workflow INFO:
+	 [Node] Running "bold_selectfiles" ("rabies.preprocess_pkg.utils.BIDSDataGraber")
+250524-20:20:22,816 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_selectfiles".
+250524-20:20:22,820 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_selectfiles" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/bold_selectfiles".
+250524-20:20:22,887 nipype.workflow INFO:
+	 [Node] Running "bold_selectfiles" ("rabies.preprocess_pkg.utils.BIDSDataGraber")
+250524-20:20:23,179 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_selectfiles".
+250524-20:20:23,183 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.template_info" in "/output_dir/main_wf/template_info".
+250524-20:20:23,258 nipype.workflow INFO:
+	 [Node] Running "template_info" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:20:27,810 nipype.workflow INFO:
+	 [Node] Finished "main_wf.template_info".
+250524-20:20:27,814 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_convert_to_RAS" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/anat_convert_to_RAS".
+250524-20:20:27,873 nipype.workflow INFO:
+	 [Node] Running "anat_convert_to_RAS" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:20:28,91 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_convert_to_RAS".
+250524-20:20:28,94 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_convert_to_RAS" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/anat_convert_to_RAS".
+250524-20:20:28,148 nipype.workflow INFO:
+	 [Node] Running "anat_convert_to_RAS" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:20:28,353 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_convert_to_RAS".
+250524-20:20:28,357 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_convert_to_RAS" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/bold_convert_to_RAS".
+250524-20:20:28,421 nipype.workflow INFO:
+	 [Node] Running "bold_convert_to_RAS" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:20:30,737 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_convert_to_RAS".
+250524-20:20:30,750 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_convert_to_RAS" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/bold_convert_to_RAS".
+250524-20:20:30,820 nipype.workflow INFO:
+	 [Node] Running "bold_convert_to_RAS" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:20:33,141 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_convert_to_RAS".
+250524-20:20:33,144 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_inho_cor_wf.InhoCorrection" in "/output_dir/main_wf/anat_inho_cor_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/InhoCorrection".
+250524-20:20:33,257 nipype.workflow INFO:
+	 [Node] Running "InhoCorrection" ("rabies.preprocess_pkg.inho_correction.InhoCorrection")
+250524-20:29:06,661 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_inho_cor_wf.InhoCorrection".
+250524-20:29:06,667 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_inho_cor_wf.InhoCorrection" in "/output_dir/main_wf/anat_inho_cor_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/InhoCorrection".
+250524-20:29:06,798 nipype.workflow INFO:
+	 [Node] Running "InhoCorrection" ("rabies.preprocess_pkg.inho_correction.InhoCorrection")
+250524-20:37:55,314 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_inho_cor_wf.InhoCorrection".
+250524-20:37:55,319 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.gen_bold_ref.gen_ref" in "/output_dir/main_wf/bold_main_wf/gen_bold_ref/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/gen_ref".
+250524-20:37:55,413 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("rabies.preprocess_pkg.bold_ref.EstimateReferenceImage")
+250524-20:40:25,859 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.gen_bold_ref.gen_ref".
+250524-20:40:25,864 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.gen_bold_ref.gen_ref" in "/output_dir/main_wf/bold_main_wf/gen_bold_ref/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/gen_ref".
+250524-20:40:25,956 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("rabies.preprocess_pkg.bold_ref.EstimateReferenceImage")
+250524-20:43:04,6 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.gen_bold_ref.gen_ref".
+250524-20:43:04,12 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_inho_cor_diagnosis" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/anat_inho_cor_diagnosis".
+250524-20:43:04,166 nipype.workflow INFO:
+	 [Node] Running "anat_inho_cor_diagnosis" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:43:08,754 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_inho_cor_diagnosis".
+250524-20:43:08,758 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_datasink" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/anat_datasink".
+250524-20:43:08,861 nipype.workflow INFO:
+	 [Node] Running "anat_datasink" ("nipype.interfaces.io.DataSink")
+250524-20:43:08,960 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_datasink".
+250524-20:43:08,965 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_inho_cor_diagnosis" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/anat_inho_cor_diagnosis".
+250524-20:43:09,139 nipype.workflow INFO:
+	 [Node] Running "anat_inho_cor_diagnosis" ("nipype.interfaces.utility.wrappers.Function")
+250524-20:43:13,721 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_inho_cor_diagnosis".
+250524-20:43:13,725 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.anat_datasink" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/anat_datasink".
+250524-20:43:13,795 nipype.workflow INFO:
+	 [Node] Running "anat_datasink" ("nipype.interfaces.io.DataSink")
+250524-20:43:13,887 nipype.workflow INFO:
+	 [Node] Finished "main_wf.anat_datasink".
+250524-20:43:13,895 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.commonspace_reg_main_split_joinnode" in "/output_dir/main_wf/commonspace_reg_wf/commonspace_reg_main_split_joinnode".
+250524-20:43:14,69 nipype.workflow INFO:
+	 [Node] Running "commonspace_reg_main_split_joinnode" ("nipype.interfaces.utility.base.IdentityInterface")
+250524-20:43:14,155 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.commonspace_reg_main_split_joinnode".
+250524-20:43:14,160 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_hmc_wf.ants_MC" in "/output_dir/main_wf/bold_main_wf/bold_hmc_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/ants_MC".
+250524-20:43:14,340 nipype.workflow INFO:
+	 [Node] Running "ants_MC" ("rabies.preprocess_pkg.hmc.antsMotionCorr")
+250524-20:46:25,600 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_hmc_wf.ants_MC".
+250524-20:46:25,605 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_hmc_wf.ants_MC" in "/output_dir/main_wf/bold_main_wf/bold_hmc_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/ants_MC".
+250524-20:46:25,792 nipype.workflow INFO:
+	 [Node] Running "ants_MC" ("rabies.preprocess_pkg.hmc.antsMotionCorr")
+250524-20:49:46,228 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_hmc_wf.ants_MC".
+250524-20:49:46,232 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.generate_template" in "/output_dir/main_wf/commonspace_reg_wf/generate_template".
+250524-20:49:46,308 nipype.workflow INFO:
+	 [Node] Running "generate_template" ("rabies.preprocess_pkg.commonspace_reg.GenerateTemplate")
+250524-21:27:30,157 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.generate_template".
+250524-21:27:30,161 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.atlas_reg" in "/output_dir/main_wf/commonspace_reg_wf/atlas_reg".
+250524-21:27:30,252 nipype.workflow INFO:
+	 [Node] Running "atlas_reg" ("nipype.interfaces.utility.wrappers.Function")
+250524-21:33:41,886 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.atlas_reg".
+250524-21:33:41,893 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.commonspace_selectfiles" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/commonspace_selectfiles".
+250524-21:33:42,212 nipype.workflow INFO:
+	 [Node] Running "commonspace_selectfiles" ("nipype.interfaces.utility.wrappers.Function")
+250524-21:33:42,319 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.commonspace_selectfiles".
+250524-21:33:42,323 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.commonspace_selectfiles" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/commonspace_selectfiles".
+250524-21:33:42,724 nipype.workflow INFO:
+	 [Node] Running "commonspace_selectfiles" ("nipype.interfaces.utility.wrappers.Function")
+250524-21:33:42,867 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.commonspace_selectfiles".
+250524-21:33:42,873 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.resample_unbiased_mask" in "/output_dir/main_wf/commonspace_reg_wf/resample_unbiased_mask".
+250524-21:33:43,48 nipype.workflow INFO:
+	 [Node] Running "resample_unbiased_mask" ("nipype.interfaces.utility.wrappers.Function")
+250524-21:33:44,560 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.resample_unbiased_mask".
+250524-21:33:44,565 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.PlotOverlap_Unbiased2Atlas" in "/output_dir/main_wf/commonspace_reg_wf/PlotOverlap_Unbiased2Atlas".
+250524-21:33:44,308 nipype.workflow INFO:
+	 [Node] Running "PlotOverlap_Unbiased2Atlas" ("rabies.preprocess_pkg.preprocess_visual_QC.PlotOverlap")
+250524-21:33:52,234 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.PlotOverlap_Unbiased2Atlas".
+250524-21:33:52,238 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.unbiased_template_datasink" in "/output_dir/main_wf/commonspace_reg_wf/unbiased_template_datasink".
+250524-21:33:52,366 nipype.workflow INFO:
+	 [Node] Running "unbiased_template_datasink" ("nipype.interfaces.io.DataSink")
+250524-21:33:52,502 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.unbiased_template_datasink".
+250524-21:33:52,505 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.prep_commonspace_transform" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/prep_commonspace_transform".
+250524-21:33:52,652 nipype.workflow INFO:
+	 [Node] Running "prep_commonspace_transform" ("nipype.interfaces.utility.wrappers.Function")
+250524-21:33:55,218 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.prep_commonspace_transform".
+250524-21:33:55,223 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.PlotOverlap_Native2Unbiased" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/PlotOverlap_Native2Unbiased".
+250524-21:33:55,467 nipype.workflow INFO:
+	 [Node] Running "PlotOverlap_Native2Unbiased" ("rabies.preprocess_pkg.preprocess_visual_QC.PlotOverlap")
+250524-21:33:59,926 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.PlotOverlap_Native2Unbiased".
+250524-21:33:59,929 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.prep_commonspace_transform" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/prep_commonspace_transform".
+250524-21:34:00,58 nipype.workflow INFO:
+	 [Node] Running "prep_commonspace_transform" ("nipype.interfaces.utility.wrappers.Function")
+250524-21:34:02,655 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.prep_commonspace_transform".
+250524-21:34:02,657 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.PlotOverlap_Native2Unbiased" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/PlotOverlap_Native2Unbiased".
+250524-21:34:02,807 nipype.workflow INFO:
+	 [Node] Running "PlotOverlap_Native2Unbiased" ("rabies.preprocess_pkg.preprocess_visual_QC.PlotOverlap")
+250524-21:34:07,560 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.PlotOverlap_Native2Unbiased".
+250524-21:34:07,563 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_inho_cor_wf.InhoCorrection" in "/output_dir/main_wf/bold_main_wf/bold_inho_cor_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/InhoCorrection".
+250524-21:34:07,814 nipype.workflow INFO:
+	 [Node] Running "InhoCorrection" ("rabies.preprocess_pkg.inho_correction.InhoCorrection")
+250524-22:08:07,568 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_inho_cor_wf.InhoCorrection".
+250524-22:08:07,574 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_inho_cor_wf.InhoCorrection" in "/output_dir/main_wf/bold_main_wf/bold_inho_cor_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/InhoCorrection".
+250524-22:08:07,823 nipype.workflow INFO:
+	 [Node] Running "InhoCorrection" ("rabies.preprocess_pkg.inho_correction.InhoCorrection")
+250524-22:22:01,714 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_inho_cor_wf.InhoCorrection".
+250524-22:22:01,720 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.cross_modal_reg_wf.EPI_Coregistration" in "/output_dir/main_wf/bold_main_wf/cross_modal_reg_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/EPI_Coregistration".
+250524-22:22:01,920 nipype.workflow INFO:
+	 [Node] Running "EPI_Coregistration" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:27:20,270 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.cross_modal_reg_wf.EPI_Coregistration".
+250524-22:27:20,277 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_inho_cor_diagnosis" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/bold_inho_cor_diagnosis".
+250524-22:27:20,536 nipype.workflow INFO:
+	 [Node] Running "bold_inho_cor_diagnosis" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:27:26,677 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_inho_cor_diagnosis".
+250524-22:27:26,682 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.cross_modal_reg_wf.EPI_Coregistration" in "/output_dir/main_wf/bold_main_wf/cross_modal_reg_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/EPI_Coregistration".
+250524-22:27:26,936 nipype.workflow INFO:
+	 [Node] Running "EPI_Coregistration" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:33:29,381 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.cross_modal_reg_wf.EPI_Coregistration".
+250524-22:33:29,386 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_inho_cor_diagnosis" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/bold_inho_cor_diagnosis".
+250524-22:33:29,643 nipype.workflow INFO:
+	 [Node] Running "bold_inho_cor_diagnosis" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:33:34,443 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_inho_cor_diagnosis".
+250524-22:33:34,450 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.prep_resampling_transforms" in "/output_dir/main_wf/bold_main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/prep_resampling_transforms".
+250524-22:33:34,772 nipype.workflow INFO:
+	 [Node] Running "prep_resampling_transforms" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:33:34,925 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.prep_resampling_transforms".
+250524-22:33:34,928 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.PlotOverlap_EPI2Anat" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/PlotOverlap_EPI2Anat".
+250524-22:33:35,99 nipype.workflow INFO:
+	 [Node] Running "PlotOverlap_EPI2Anat" ("rabies.preprocess_pkg.preprocess_visual_QC.PlotOverlap")
+250524-22:33:39,633 nipype.workflow INFO:
+	 [Node] Finished "main_wf.PlotOverlap_EPI2Anat".
+250524-22:33:39,636 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.transforms_datasink" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/transforms_datasink".
+250524-22:33:39,910 nipype.workflow INFO:
+	 [Node] Running "transforms_datasink" ("nipype.interfaces.io.DataSink")
+250524-22:33:40,434 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.transforms_datasink".
+250524-22:33:40,445 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.prep_resampling_transforms" in "/output_dir/main_wf/bold_main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/prep_resampling_transforms".
+250524-22:33:40,779 nipype.workflow INFO:
+	 [Node] Running "prep_resampling_transforms" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:33:40,963 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.prep_resampling_transforms".
+250524-22:33:40,967 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.PlotOverlap_EPI2Anat" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/PlotOverlap_EPI2Anat".
+250524-22:33:41,165 nipype.workflow INFO:
+	 [Node] Running "PlotOverlap_EPI2Anat" ("rabies.preprocess_pkg.preprocess_visual_QC.PlotOverlap")
+250524-22:33:46,567 nipype.workflow INFO:
+	 [Node] Finished "main_wf.PlotOverlap_EPI2Anat".
+250524-22:33:46,572 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.commonspace_reg_wf.transforms_datasink" in "/output_dir/main_wf/commonspace_reg_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/transforms_datasink".
+250524-22:33:46,829 nipype.workflow INFO:
+	 [Node] Running "transforms_datasink" ("nipype.interfaces.io.DataSink")
+250524-22:33:47,191 nipype.workflow INFO:
+	 [Node] Finished "main_wf.commonspace_reg_wf.transforms_datasink".
+250524-22:33:47,195 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.bold_transform" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/bold_transform".
+250524-22:33:47,454 nipype.workflow INFO:
+	 [Node] Running "bold_transform" ("rabies.utils.slice_applyTransforms")
+250524-22:35:43,626 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.bold_transform".
+250524-22:35:43,632 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.raw_brain_mask" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/raw_brain_mask".
+250524-22:35:43,911 nipype.workflow INFO:
+	 [Node] Running "raw_brain_mask" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-22:35:47,771 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.raw_brain_mask".
+250524-22:35:47,776 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.bold_transform" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/bold_transform".
+250524-22:35:48,66 nipype.workflow INFO:
+	 [Node] Running "bold_transform" ("rabies.utils.slice_applyTransforms")
+250524-22:40:24,919 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.bold_transform".
+250524-22:40:24,924 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.raw_brain_mask" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/raw_brain_mask".
+250524-22:40:25,204 nipype.workflow INFO:
+	 [Node] Running "raw_brain_mask" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-22:40:28,446 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.raw_brain_mask".
+250524-22:40:28,453 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.bold_transform" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/bold_transform".
+250524-22:40:28,751 nipype.workflow INFO:
+	 [Node] Running "bold_transform" ("rabies.utils.slice_applyTransforms")
+250524-22:42:56,656 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.bold_transform".
+250524-22:42:56,664 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.raw_brain_mask" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/raw_brain_mask".
+250524-22:42:57,31 nipype.workflow INFO:
+	 [Node] Running "raw_brain_mask" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-22:43:00,868 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.raw_brain_mask".
+250524-22:43:00,876 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.bold_transform" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/bold_transform".
+250524-22:43:01,496 nipype.workflow INFO:
+	 [Node] Running "bold_transform" ("rabies.utils.slice_applyTransforms")
+250524-22:48:16,361 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.bold_transform".
+250524-22:48:16,367 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.raw_brain_mask" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/raw_brain_mask".
+250524-22:48:16,707 nipype.workflow INFO:
+	 [Node] Running "raw_brain_mask" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-22:48:20,829 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.raw_brain_mask".
+250524-22:48:20,834 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.merge" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/merge".
+250524-22:48:25,398 nipype.workflow INFO:
+	 [Node] Running "merge" ("rabies.utils.Merge")
+250524-22:48:40,20 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.merge".
+250524-22:48:40,24 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.merge" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/merge".
+250524-22:48:44,619 nipype.workflow INFO:
+	 [Node] Running "merge" ("rabies.utils.Merge")
+250524-22:48:58,415 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.merge".
+250524-22:48:58,421 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.estimate_motion_node" in "/output_dir/main_wf/bold_main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/estimate_motion_node".
+250524-22:48:58,660 nipype.workflow INFO:
+	 [Node] Running "estimate_motion_node" ("rabies.preprocess_pkg.hmc.EstimateMotionParams")
+250524-22:49:02,48 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.estimate_motion_node".
+250524-22:49:02,52 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.merge" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/merge".
+250524-22:49:06,826 nipype.workflow INFO:
+	 [Node] Running "merge" ("rabies.utils.Merge")
+250524-22:49:22,825 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.merge".
+250524-22:49:22,829 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.merge" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/merge".
+250524-22:49:27,665 nipype.workflow INFO:
+	 [Node] Running "merge" ("rabies.utils.Merge")
+250524-22:49:41,102 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.merge".
+250524-22:49:41,107 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.estimate_motion_node" in "/output_dir/main_wf/bold_main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/estimate_motion_node".
+250524-22:49:41,310 nipype.workflow INFO:
+	 [Node] Running "estimate_motion_node" ("rabies.preprocess_pkg.hmc.EstimateMotionParams")
+250524-22:49:44,548 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.estimate_motion_node".
+250524-22:49:44,555 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.gen_bold_ref.gen_ref" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/gen_bold_ref/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/gen_ref".
+250524-22:49:44,706 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("rabies.preprocess_pkg.bold_ref.EstimateReferenceImage")
+250524-22:52:35,645 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.gen_bold_ref.gen_ref".
+250524-22:52:35,650 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.gen_bold_ref.gen_ref" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/gen_bold_ref/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/gen_ref".
+250524-22:52:35,795 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("rabies.preprocess_pkg.bold_ref.EstimateReferenceImage")
+250524-22:55:16,778 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.gen_bold_ref.gen_ref".
+250524-22:55:16,784 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.temporal_features" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/temporal_features".
+250524-22:55:16,988 nipype.workflow INFO:
+	 [Node] Running "temporal_features" ("nipype.interfaces.utility.wrappers.Function")
+250524-22:55:19,219 nipype.workflow INFO:
+	 [Node] Finished "main_wf.temporal_features".
+250524-22:55:19,224 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.motion_datasink" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/motion_datasink".
+250524-22:55:19,343 nipype.workflow INFO:
+	 [Node] Running "motion_datasink" ("nipype.interfaces.io.DataSink")
+250524-22:55:19,500 nipype.workflow INFO:
+	 [Node] Finished "main_wf.motion_datasink".
+250524-22:55:19,503 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.gen_bold_ref.gen_ref" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/gen_bold_ref/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/gen_ref".
+250524-22:55:19,668 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("rabies.preprocess_pkg.bold_ref.EstimateReferenceImage")
+250524-22:58:07,50 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.gen_bold_ref.gen_ref".
+250524-22:58:07,55 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.gen_bold_ref.gen_ref" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/gen_bold_ref/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/gen_ref".
+250524-22:58:07,206 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("rabies.preprocess_pkg.bold_ref.EstimateReferenceImage")
+250524-23:01:00,66 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.gen_bold_ref.gen_ref".
+250524-23:01:00,71 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.temporal_features" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/temporal_features".
+250524-23:01:00,274 nipype.workflow INFO:
+	 [Node] Running "temporal_features" ("nipype.interfaces.utility.wrappers.Function")
+250524-23:01:03,302 nipype.workflow INFO:
+	 [Node] Finished "main_wf.temporal_features".
+250524-23:01:03,310 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.motion_datasink" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/motion_datasink".
+250524-23:01:03,540 nipype.workflow INFO:
+	 [Node] Running "motion_datasink" ("nipype.interfaces.io.DataSink")
+250524-23:01:03,802 nipype.workflow INFO:
+	 [Node] Finished "main_wf.motion_datasink".
+250524-23:01:03,809 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.Brain_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/Brain_mask_EPI".
+250524-23:01:04,224 nipype.workflow INFO:
+	 [Node] Running "Brain_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:07,297 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.Brain_mask_EPI".
+250524-23:01:07,304 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.WM_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/WM_mask_EPI".
+250524-23:01:07,633 nipype.workflow INFO:
+	 [Node] Running "WM_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:10,826 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.WM_mask_EPI".
+250524-23:01:10,832 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.CSF_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/CSF_mask_EPI".
+250524-23:01:11,217 nipype.workflow INFO:
+	 [Node] Running "CSF_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:15,725 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.CSF_mask_EPI".
+250524-23:01:15,736 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.vascular_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/vascular_mask_EPI".
+250524-23:01:16,263 nipype.workflow INFO:
+	 [Node] Running "vascular_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:17,940 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.vascular_mask_EPI".
+250524-23:01:17,944 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.prop_labels_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/prop_labels_EPI".
+250524-23:01:18,179 nipype.workflow INFO:
+	 [Node] Running "prop_labels_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:21,303 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.prop_labels_EPI".
+250524-23:01:21,307 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.Brain_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/Brain_mask_EPI".
+250524-23:01:21,468 nipype.workflow INFO:
+	 [Node] Running "Brain_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:22,870 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.Brain_mask_EPI".
+250524-23:01:22,876 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.WM_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/WM_mask_EPI".
+250524-23:01:23,47 nipype.workflow INFO:
+	 [Node] Running "WM_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:24,606 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.WM_mask_EPI".
+250524-23:01:24,616 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.CSF_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/CSF_mask_EPI".
+250524-23:01:24,862 nipype.workflow INFO:
+	 [Node] Running "CSF_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:26,691 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.CSF_mask_EPI".
+250524-23:01:26,696 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.vascular_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/vascular_mask_EPI".
+250524-23:01:26,877 nipype.workflow INFO:
+	 [Node] Running "vascular_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:27,279 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.vascular_mask_EPI".
+250524-23:01:27,286 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.prop_labels_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/prop_labels_EPI".
+250524-23:01:27,479 nipype.workflow INFO:
+	 [Node] Running "prop_labels_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:29,476 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.prop_labels_EPI".
+250524-23:01:29,482 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.Brain_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/Brain_mask_EPI".
+250524-23:01:29,788 nipype.workflow INFO:
+	 [Node] Running "Brain_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:33,85 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.Brain_mask_EPI".
+250524-23:01:33,90 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.WM_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/WM_mask_EPI".
+250524-23:01:33,324 nipype.workflow INFO:
+	 [Node] Running "WM_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:36,179 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.WM_mask_EPI".
+250524-23:01:36,183 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.CSF_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/CSF_mask_EPI".
+250524-23:01:36,465 nipype.workflow INFO:
+	 [Node] Running "CSF_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:36,57 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.CSF_mask_EPI".
+250524-23:01:36,63 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.vascular_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/vascular_mask_EPI".
+250524-23:01:36,356 nipype.workflow INFO:
+	 [Node] Running "vascular_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:38,207 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.vascular_mask_EPI".
+250524-23:01:38,216 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_native_trans_wf.prop_labels_EPI" in "/output_dir/main_wf/bold_main_wf/bold_native_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/prop_labels_EPI".
+250524-23:01:38,521 nipype.workflow INFO:
+	 [Node] Running "prop_labels_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:42,229 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_native_trans_wf.prop_labels_EPI".
+250524-23:01:42,235 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.Brain_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/Brain_mask_EPI".
+250524-23:01:42,410 nipype.workflow INFO:
+	 [Node] Running "Brain_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:44,31 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.Brain_mask_EPI".
+250524-23:01:44,38 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.WM_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/WM_mask_EPI".
+250524-23:01:44,225 nipype.workflow INFO:
+	 [Node] Running "WM_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:45,760 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.WM_mask_EPI".
+250524-23:01:45,766 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.CSF_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/CSF_mask_EPI".
+250524-23:01:45,964 nipype.workflow INFO:
+	 [Node] Running "CSF_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:47,176 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.CSF_mask_EPI".
+250524-23:01:47,190 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.vascular_mask_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/vascular_mask_EPI".
+250524-23:01:47,464 nipype.workflow INFO:
+	 [Node] Running "vascular_mask_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:47,784 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.vascular_mask_EPI".
+250524-23:01:47,787 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_main_wf.bold_commonspace_trans_wf.prop_labels_EPI" in "/output_dir/main_wf/bold_main_wf/bold_commonspace_trans_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/prop_labels_EPI".
+250524-23:01:47,940 nipype.workflow INFO:
+	 [Node] Running "prop_labels_EPI" ("rabies.preprocess_pkg.resampling.MaskEPI")
+250524-23:01:50,238 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_main_wf.bold_commonspace_trans_wf.prop_labels_EPI".
+250524-23:01:50,244 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_datasink" in "/output_dir/main_wf/_scan_info_subject_idPHG001.session3_split_name_sub-PHG001_ses-3_acq-RARE_T2w/_run_1/bold_datasink".
+250524-23:01:51,164 nipype.workflow INFO:
+	 [Node] Running "bold_datasink" ("nipype.interfaces.io.DataSink")
+250524-23:01:54,199 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_datasink".
+250524-23:01:54,204 nipype.workflow INFO:
+	 [Node] Setting-up "main_wf.bold_datasink" in "/output_dir/main_wf/_scan_info_subject_idPHG002.session3_split_name_sub-PHG002_ses-3_acq-RARE_T2w/_run_1/bold_datasink".
+250524-23:01:55,129 nipype.workflow INFO:
+	 [Node] Running "bold_datasink" ("nipype.interfaces.io.DataSink")
+250524-23:02:01,835 nipype.workflow INFO:
+	 [Node] Finished "main_wf.bold_datasink".
